@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 
 namespace SpeedTest
 {
@@ -7,27 +10,9 @@ namespace SpeedTest
     {
         static void Main(string[] args)
         {
-
-            String[] phrases = new String[]
-            {
-                "The quick brown mouse jumped over the tall frog.",
-                "Quick was the man who had to build the house.",
-                "Gone are the days of hardship and paradise.",
-                "A journey of a thousand miles begins with a single step.",
-                "A house divided against itself cannot stand.",
-                "A man who is his own lawyer has a fool for a client.",
-                "Abandon all hope ye who enter here.",
-                "Absence makes the heart grow fonder.",
-                "Jack of All Trades Master of None.",
-                "Everything But The Kitchen Sink.",
-                "Barking Up The Wrong Tree.",
-                "A Fool and His Money are Soon Parted.",
-                "What Am I, Chopped Liver?",
-                "You Can't Judge a Book By Its Cover",
-                "Every Cloud Has a Silver Lining.",
-                "You Can't Teach an Old Dog New Tricks.",
-                "Birds of a Feather Flock Together."
-            };
+            // Load phrases from phrases.txt file
+            string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"phrases.txt");
+            string[] phrases = File.ReadAllLines(path);
 
             Random ranNum = new Random();
 
